@@ -1,111 +1,77 @@
-<div class="container-xl translate-type">
-  <button type="button" [class.active]="selectedType === 'text'" class="mr-12px btn" (click)="onSelectType('text')">
-    <span class="material-icons md-22 align-middle">
-      translate
-    </span>Аҳәоу</button>
-  <button hidden type="button" [class.active]="selectedType === 'doc'" class="mr-12px btn" (click)="onSelectType('doc')">
-    <span class=" material-icons md-22 align-middle">
-      insert_drive_file
-    </span>Ашәҟәы</button>
-  <button hidden type="button" [class.active]="selectedType === 'photo'" class="mr-12px btn" (click)="onSelectType('photo')">
-    <span class=" material-icons md-22 align-middle">
-      insert_photo
-    </span>Асахьа</button>
-</div>
-<div class="container-xl p-0 height-google">
-  <div class="shadow-google bg-white">
-    <div class="row m-0 border-google nav" role="navigation">
-      <div class="nav col" id="lang-src">
-        <div *ngFor="let lang of langs" [class.active]="lang === selectedSrcLang" (click)="onSelectSrc(lang)" class="lang nav-link">
-          {{lang.name | uppercase}}
-        </div>
-      </div>
-      <div class="nav col" id="lang-src-sm">
-        <div class="lang nav-link">{{selectedSrcLang.name | uppercase}}</div>
-      </div>
-      <div (click)="onSwap()" class="col-1 nav-link material-icons align-middle swap" id="swap-lang">swap_horiz</div>
-      <div class="nav col" id="lang-tgt">
-        <div *ngFor="let lang of langs" [class.active]="lang === selectedTgtLang && selectedType!=='photo'" (click)="onSelectTgt(lang)" class="lang nav-link">
-          {{lang.name | uppercase}}
-        </div>
-      </div>
-      <div class="nav col" id="lang-tgt-sm">
-        <div class="lang nav-link">{{selectedTgtLang.name | uppercase}}</div>
-      </div>
-    </div>
-    <!-- Text -->
-    <div *ngIf="selectedType==='text'" class="row m-0 form-group">
-      <div class="col-sm-6 px-0">
-        <textarea [style.height]="height" [(ngModel)]="src" (ngModelChange)="onChangeText(mysrc)" #mysrc class="form-control rounded-0 mb-3 no-resize no-box-shadow" id="source" rows="6"></textarea>
-        <span *ngIf="src" class="clear material-icons" (click)="onClear()">
-          clear
-        </span>
-      </div>
-      <div class="col-sm-6 px-0 mobile">
-        <textarea [style.height]="height" [(ngModel)]="tgt" (ngModelChange)="onChangeText(mytgt)" #mytgt class="form-control rounded-0 mb-3 no-resize no-box-shadow" id="target" [readonly]="isReadOnlyTgt" placeholder="{{placeholderTgt}}"></textarea>
-        <span *ngIf="tgt" class="star material-icons" [class.active-star]="starred" (click)="onStarred()">
-          {{starred == true ? 'star': 'star_border'}}
-        </span>
-      </div>
-    </div>
-    <!-- Document -->
-    <div *ngIf="selectedType==='doc'" class="row m-0 form-group">
-      <div *ngIf="!file" class="col-sm-12 px-0 select-file-section">
-        <div class="choose-document-prompt">Ашәҟәы иалх</div>
-        <div class="upload-filetypes-prompt">
-          <!-- We should support .doc, .docx, .odf, .pdf, .ppt, .pptx, .ps, .rtf, .xls, or .xlsx -->
-          Ақәҵаразы .txt
-        </div>
-        <input type="file" name="file" id="tlid-file-input" (change)="onFileSelect($event)" class="file-input">
-        <label for="tlid-file-input" class="button">Укомпиутер аҟнытә иааг</label>
-      </div>
-      <div *ngIf="file" class="file-holder row">
-        <div class="file-info col-sm-6">
-          <span class="material-icons md-file align-top">
-            insert_drive_file
-          </span>
-          <div class="file-label">{{file.name}}
-            <div class="file-size">{{file.size/1000 | number:'1.0-0'}} KB</div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-          <div *ngIf="downloadLink" class="downloadLink">
-            Еиҭагоу ашәҟәы: <a [href]="downloadLink.url" target="_blank">{{downloadLink.filename}}</a>
-          </div>
-          <span class="cancel-file material-icons" (click)="onCancelFile()">
-            cancel
-          </span>
-        </div>
-      </div>
-    </div>
-    <!-- Photo -->
-    <div *ngIf="selectedType==='photo'" class="row m-0 form-group">
-      <div *ngIf="!photo" class="col-sm-12 px-0 select-file-section">
-        <div class="choose-document-prompt">Асахьа иалх</div>
-        <div class="upload-filetypes-prompt">
-          Ақәҵаразы .jpg, .png
-        </div>
-        <input type="file" name="file" id="tlid-photo-input" (change)="onPhotoSelect($event)" class="file-input">
-        <label for="tlid-photo-input" class="button">Укомпиутер аҟнытә иааг</label>
-      </div>
-      <div *ngIf="photo" class="file-holder">
-        <span class="material-icons md-file align-top">
-          insert_drive_file
-        </span>
-        <div class="file-info">
-          <div class="file-label">{{photo.name}}</div>
-          <div class="file-size">{{photo.size/1000 | number:'1.0-0'}} KB</div>
-        </div>
-        <span class="cancel-file material-icons" (click)="onCancelPhoto()">
-          cancel
-        </span>
-      </div>
-    </div>
-    <!--  -->
+<br>
+
+<div class="row">
+
+  <div class="medium-7 large-6 columns">
+    <h1>Learning English with AI</h1>
+    <p class="subheader">We use English to teach AI, now it's time to use AI to learn English.</p>
+    <p class="subheader">We use statistical analysis and artifricial intelegince for effective learning, we
+    want to get you up to speed with customized lessons for your needs.</p>
+    <p class="subheader">We have tested methods to get you from zero to hero in six months, guaranteed.</p>
+    <button class="button">Take a Tour</button>
   </div>
-  <div class="row m-0 justify-content-center">
-    <div class="col-sm-10"></div>
-    <button *ngIf="selectedType!=='photo'" (click)="onTranslate()" type="button" class="col-11 col-sm-2 btn btn-success mt-2 no-box-shadow" id="translate">Еиҭага</button>
-    <button *ngIf="selectedType==='photo'" (click)="onRead()" type="button" class="col-11 col-sm-2 btn btn-success mt-2 no-box-shadow" id="read">Уаԥха</button>
+
+  <div class="show-for-large large-3 columns">
+    <img src="https://placehold.co/400x370" alt="picture of robot">
+  </div>
+
+  <div class="medium-5 large-3 columns">
+    <div class="callout secondary">
+      <form>
+        <div class="row">
+          <div class="small-12 columns">
+            <label>Find Your Teacher Near You
+              <input type="text" placeholder="Search destinations">
+            </label>
+            <button type="submit" class="button">Search Now!</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<div class="row column">
+  <hr>
+</div>
+
+<div class="row column">
+  <p class="lead">Text Analysis</p>
+</div>
+
+<div class="row" id="content">
+  <div class="medium-10 columns">
+    <div class="callout">
+      <textarea [style.height]="height" [(ngModel)]="src" (ngModelChange)="onChangeText(mysrc)" #mysrc id="source">
+      <p class="lead">What is music</p>
+      <p>Music is the art of arranging sounds in time through the elements of melody, harmony, rhythm, and timbre. It is one of the universal cultural aspects of all human societies. General definitions of music include common elements such as pitch (which governs melody and harmony), rhythm (and its associated concepts tempo, meter, and articulation), dynamics (loudness and softness), and the sonic qualities of timbre and texture (which are sometimes termed the "color" of a musical sound). Different styles or types of music may emphasize, de-emphasize or omit some of these elements. Music is performed with a vast range of instruments and vocal techniques ranging from singing to rapping; there are solely instrumental pieces, solely vocal pieces (such as songs without instrumental accompaniment) and pieces that combine singing and instruments. The word derives from Greek μουσική, mousiké, '(art) of the Muses'.
+      </p>
+      <p>
+      In its most general form, the activities describing music as an art form or cultural activity include the creation of works of music (songs, tunes, symphonies, and so on), the criticism of music, the study of the history of music, and the aesthetic examination of music. Ancient Greek and Indian philosophers defined music in two parts: melodies, as tones ordered horizontally, and harmonies as tones ordered vertically. Common sayings such as "the harmony of the spheres" and "it is music to my ears" point to the notion that music is often ordered and pleasant to listen to. However, 20th-century composer John Cage thought that any sound can be music, saying, for example, "There is no noise, only sound."
+      </p>
+      <p>
+      The creation, performance, significance, and even the definition of music vary according to culture and social context. Indeed, throughout history, some new forms or styles of music have been criticized as "not being music", including Beethoven's Grosse Fuge string quartet in 1825, early jazz in the beginning of the 1900s and hardcore punk in the 1980s. There are many types of music, including popular music, traditional music, art music, music written for religious ceremonies, and work songs such as chanteys. Music ranges from strictly organized compositions—such as Classical music symphonies from the 1700s and 1800s—through to spontaneously played improvisational music such as jazz, and avant-garde styles of chance-based contemporary music from the 20th and 21st centuries.
+      </p>
+      <p>
+      Music can be divided into genres (e.g., country music) and genres can be further divided into subgenres (e.g., alternative country and country pop are two of the many country subgenres), although the dividing lines and relationships between music genres are often subtle, sometimes open to personal interpretation, and occasionally controversial. For example, it can be hard to draw the line between some early 1980s hard rock and heavy metal. Within the arts, music may be classified as a performing art, a fine art, or as an auditory art. Music may be played or sung and heard live at a rock concert or orchestra performance, heard live as part of a dramatic work (a music theater show or opera), or it may be recorded and listened to on a radio, MP3 player, CD player, smartphone or as film score or TV show.
+      </p>
+      <p>
+      In many cultures, music is an important part of people's way of life, as it plays a key role in religious rituals, rite of passage ceremonies (e.g., graduation and marriage), social activities (e.g., dancing) and cultural activities ranging from amateur karaoke singing to playing in an amateur funk band or singing in a community choir. People may make music as a hobby, like a teen playing cello in a youth orchestra, or work as a professional musician or singer. The music industry includes the individuals who create new songs and musical pieces (such as songwriters and composers), individuals who perform music (which include orchestra, jazz band and rock band musicians, singers and conductors), individuals who record music (music producers and sound engineers), individuals who organize concert tours, and individuals who sell recordings, sheet music, and scores to customers. Even once a song or piece has been performed, music critics, music journalists, and music scholars may assess and evaluate the piece and its performance.
+      </p>
+    </textarea>
+    <span *ngIf="src" class="" (click)="onClear()">
+      clear
+    </span>
+    </div>
+  </div>
+  <div class="medium-2 columns" data-sticky-container>
+    <div class="sticky button-group" data-sticky data-anchor="content">
+      <a class="column button" [class.active]="selectedType === 'bpe'" (click)="onSelectType('bpe')">BPE Frequency</a>
+      <a class="column button" [class.active]="selectedType === 'word'" (click)="onSelectType('word')">Word Frequency</a>
+      <a class="column button" [class.active]="selectedType === 'named'" (click)="onSelectType('named')">Named Entity</a>
+      <a class="column button" [class.active]="selectedType === 'pos'" (click)="onSelectType('pos')">Part of Speech</a>
+      <a class="column button" [class.active]="selectedType === 'summ'" (click)="onSelectType('summ')">Summary</a>
+    </div>
   </div>
 </div>
