@@ -23,7 +23,7 @@ export class TranslateComponent implements OnInit {
   file: File;
   photo: File;
   downloadLink: Dlink;
-  height = "400px"
+  height = "1400px"
   // regular expression for lines with only white spaces
   regexp: RegExp = /^[\t\r\n\s]*$/;
 
