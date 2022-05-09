@@ -42,7 +42,7 @@
 
 <div class="row" id="content">
   <div class="medium-10 columns">
-    <textarea [style.height]="height" [(ngModel)]="src" (ngModelChange)="onChangeText(mysrc)" #mysrc id="source">
+    <textarea [(ngModel)]="src" (ngModelChange)="onChangeText(mysrc)" #mysrc id="source">
     </textarea>
     <span *ngIf="src" class="" (click)="onClear()">
       clear
